@@ -1,0 +1,4 @@
+{
+    "command": "pytest",
+    "working_directory": "/home/kavia/workspace/code-generation/vintage-market-hub-176149-176159/ecommerce_backend"
+}
