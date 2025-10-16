@@ -10,6 +10,7 @@ from src.models import Base  # Ensure models are imported so metadata is populat
 _settings = get_settings()
 
 # Create SQLAlchemy engine and session factory
+# Note: Alembic env.py will also construct its own engine using DATABASE_URL for migrations.
 engine = create_engine(_settings.DATABASE_URL, pool_pre_ping=True, future=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=Session)
 
