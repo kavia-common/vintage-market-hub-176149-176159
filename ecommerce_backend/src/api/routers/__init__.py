@@ -1,1 +1,9 @@
 # Package init for API routers.
+# Expose commonly used routers (optional)
+try:
+    from .auth import router as auth_router  # noqa: F401
+    from .users import router as users_router  # noqa: F401
+    from .listings import router as listings_router  # noqa: F401
+except Exception:
+    # During certain tooling operations, imports may fail; ignore to avoid side effects.
+    pass
