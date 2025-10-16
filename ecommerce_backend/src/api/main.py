@@ -12,6 +12,7 @@ app = FastAPI(
     openapi_tags=[
         {"name": "health", "description": "Service health and diagnostics"},
         {"name": "auth", "description": "Authentication and authorization"},
+        {"name": "users", "description": "User profiles and preferences"},
         {"name": "listings", "description": "Product listings management"},
         {"name": "transactions", "description": "Payments and transactions"},
     ],
@@ -37,5 +38,7 @@ def health_check():
 
 # Include API routers
 from src.api.routers.auth import router as auth_router  # noqa: E402
+from src.api.routers.users import router as users_router  # noqa: E402
 
 app.include_router(auth_router, prefix=settings.API_V1_PREFIX, tags=["auth"])
+app.include_router(users_router, prefix=settings.API_V1_PREFIX, tags=["users"])
