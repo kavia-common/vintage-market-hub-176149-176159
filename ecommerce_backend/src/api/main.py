@@ -35,7 +35,7 @@ def health_check():
     return {"message": "Healthy"}
 
 
-# Placeholder for including API routers (to be added in subsequent steps)
-# from src.api.v1.endpoints import auth, listings
-# app.include_router(auth.router, prefix=settings.API_V1_PREFIX, tags=["auth"])
-# app.include_router(listings.router, prefix=settings.API_V1_PREFIX, tags=["listings"])
+# Include API routers
+from src.api.routers.auth import router as auth_router  # noqa: E402
+
+app.include_router(auth_router, prefix=settings.API_V1_PREFIX, tags=["auth"])
