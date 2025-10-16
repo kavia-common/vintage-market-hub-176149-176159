@@ -14,6 +14,8 @@ app = FastAPI(
         {"name": "auth", "description": "Authentication and authorization"},
         {"name": "users", "description": "User profiles and preferences"},
         {"name": "listings", "description": "Product listings management"},
+        {"name": "offers", "description": "Offers lifecycle and actions"},
+        {"name": "negotiations", "description": "Negotiation threads for offers"},
         {"name": "transactions", "description": "Payments and transactions"},
     ],
 )
@@ -40,7 +42,11 @@ def health_check():
 from src.api.routers.auth import router as auth_router  # noqa: E402
 from src.api.routers.users import router as users_router  # noqa: E402
 from src.api.routers.listings import router as listings_router  # noqa: E402
+from src.api.routers.offers import router as offers_router  # noqa: E402
+from src.api.routers.negotiations import router as negotiations_router  # noqa: E402
 
 app.include_router(auth_router, prefix=settings.API_V1_PREFIX, tags=["auth"])
 app.include_router(users_router, prefix=settings.API_V1_PREFIX, tags=["users"])
 app.include_router(listings_router, prefix=settings.API_V1_PREFIX, tags=["listings"])
+app.include_router(offers_router, prefix=settings.API_V1_PREFIX, tags=["offers"])
+app.include_router(negotiations_router, prefix=settings.API_V1_PREFIX, tags=["negotiations"])
