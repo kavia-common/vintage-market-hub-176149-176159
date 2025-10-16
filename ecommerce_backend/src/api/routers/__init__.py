@@ -6,6 +6,7 @@ try:
     from .listings import router as listings_router  # noqa: F401
     from .offers import router as offers_router  # noqa: F401
     from .negotiations import router as negotiations_router  # noqa: F401
+    from .swaps import router as swaps_router  # noqa: F401
 except Exception:
     # During certain tooling operations, imports may fail; ignore to avoid side effects.
     pass

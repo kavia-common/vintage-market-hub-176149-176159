@@ -16,6 +16,7 @@ app = FastAPI(
         {"name": "listings", "description": "Product listings management"},
         {"name": "offers", "description": "Offers lifecycle and actions"},
         {"name": "negotiations", "description": "Negotiation threads for offers"},
+        {"name": "swaps", "description": "Item swap proposals and actions"},
         {"name": "transactions", "description": "Payments and transactions"},
     ],
 )
@@ -44,9 +45,11 @@ from src.api.routers.users import router as users_router  # noqa: E402
 from src.api.routers.listings import router as listings_router  # noqa: E402
 from src.api.routers.offers import router as offers_router  # noqa: E402
 from src.api.routers.negotiations import router as negotiations_router  # noqa: E402
+from src.api.routers.swaps import router as swaps_router  # noqa: E402
 
 app.include_router(auth_router, prefix=settings.API_V1_PREFIX, tags=["auth"])
 app.include_router(users_router, prefix=settings.API_V1_PREFIX, tags=["users"])
 app.include_router(listings_router, prefix=settings.API_V1_PREFIX, tags=["listings"])
 app.include_router(offers_router, prefix=settings.API_V1_PREFIX, tags=["offers"])
 app.include_router(negotiations_router, prefix=settings.API_V1_PREFIX, tags=["negotiations"])
+app.include_router(swaps_router, prefix=settings.API_V1_PREFIX, tags=["swaps"])
