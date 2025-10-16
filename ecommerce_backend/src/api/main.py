@@ -13,6 +13,8 @@ app = FastAPI(
         {"name": "health", "description": "Service health and diagnostics"},
         {"name": "auth", "description": "Authentication and authorization"},
         {"name": "users", "description": "User profiles and preferences"},
+        {"name": "regions", "description": "Geographic regions available for filtering and scoping"},
+        {"name": "categories", "description": "Item categories used for browsing and filtering"},
         {"name": "listings", "description": "Product listings management"},
         {"name": "offers", "description": "Offers lifecycle and actions"},
         {"name": "negotiations", "description": "Negotiation threads for offers"},
@@ -49,9 +51,13 @@ from src.api.routers.negotiations import router as negotiations_router  # noqa: 
 from src.api.routers.swaps import router as swaps_router  # noqa: E402
 from src.api.routers.transactions import router as transactions_router  # noqa: E402
 from src.api.routers.webhooks import router as webhooks_router  # noqa: E402
+from src.api.routers.regions import router as regions_router  # noqa: E402
+from src.api.routers.categories import router as categories_router  # noqa: E402
 
 app.include_router(auth_router, prefix=settings.API_V1_PREFIX, tags=["auth"])
 app.include_router(users_router, prefix=settings.API_V1_PREFIX, tags=["users"])
+app.include_router(regions_router, prefix=settings.API_V1_PREFIX, tags=["regions"])
+app.include_router(categories_router, prefix=settings.API_V1_PREFIX, tags=["categories"])
 app.include_router(listings_router, prefix=settings.API_V1_PREFIX, tags=["listings"])
 app.include_router(offers_router, prefix=settings.API_V1_PREFIX, tags=["offers"])
 app.include_router(negotiations_router, prefix=settings.API_V1_PREFIX, tags=["negotiations"])
