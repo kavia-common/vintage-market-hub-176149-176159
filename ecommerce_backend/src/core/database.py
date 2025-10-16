@@ -5,12 +5,19 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
 from src.core.config import get_settings
+from src.models import Base  # Ensure models are imported so metadata is populated
 
 _settings = get_settings()
 
 # Create SQLAlchemy engine and session factory
 engine = create_engine(_settings.DATABASE_URL, pool_pre_ping=True, future=True)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine, class_=Session)
+
+# Expose Base for Alembic and metadata access
+# PUBLIC_INTERFACE
+def get_base() -> Base.__class__:
+    """Return SQLAlchemy Declarative Base for migrations and metadata operations."""
+    return Base
 
 
 # PUBLIC_INTERFACE
